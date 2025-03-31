@@ -12,13 +12,6 @@ function App() {
 
   });
 
-  const [errors, setErrors] = useState({
-    author: '',
-    title: '',
-    body: '',
-    public: ''
-
-  });
 
   function handleFormData(e) {
     console.log(e.target)
@@ -35,10 +28,11 @@ function App() {
     e.preventDefault();
     console.log(formData)
 
-    fetch('https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts'), {
+    fetch('https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts', {
       method: 'POST',
       body: JSON.stringify(formData)
-    }
+    })
+
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -48,11 +42,13 @@ function App() {
       })
 
 
+
+
   }
 
   return (
     <>
-      <div className="container">
+      <div className="container my-3">
         <h1>React post form</h1>
         <div className="card">
           <form method='POST' onSubmit={handleFormSubmit}>
